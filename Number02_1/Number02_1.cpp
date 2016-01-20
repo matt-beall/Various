@@ -92,5 +92,7 @@ int main(){
     removeDups(firstNode);
 
     printValues(firstNode);
+
+    delete firstNode;
     
 }
