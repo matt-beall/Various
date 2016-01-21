@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11 -fms-extensions   CMakeFiles/number04_1.dir/Number04_1.cpp.o CMakeFiles/number04_1.dir/Vertex.cpp.o CMakeFiles/number04_1.dir/VertexGraph.cpp.o CMakeFiles/number04_1.dir/Edge.cpp.o  -o ../bin/number04_1 -rdynamic 
