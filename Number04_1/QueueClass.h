@@ -14,8 +14,11 @@ public:
     T* dequeue();
     bool isEmpty();
     bool containsOne();
+    std::vector<T*> getFrontPath();
 
 private:
+
+    int numNodes;
 
     QueueNode<T>* front;
     QueueNode<T>* rear;
@@ -23,7 +26,8 @@ private:
 
 
 template <typename T>
-Queue<T>::Queue(): front{nullptr}, 
+Queue<T>::Queue(): numNodes(0),
+                   front{nullptr}, 
                    rear{nullptr}
 {
 
@@ -44,17 +48,22 @@ void Queue<T>::enqueue(T* val)
     {
         front = newNode;
         rear = newNode;
+        std::vector<T*> emptyPath;
+        rear->setPath(emptyPath);
     }
     else if(containsOne())
     {
         front->next = newNode;
         rear = newNode;
+        rear->setPath(front->getPath());
     }
     else
     {
         rear->next = newNode;
+        rear->next->setPath(rear->getPath());
         rear = rear->next;
     }
+    numNodes++;
 }
 
 template <typename T>
@@ -64,24 +73,32 @@ T* Queue<T>::dequeue()
     {
         T* val = front->value;   
         front = front->next;
+        numNodes--;
         return val;
     }
     else
     {
         return nullptr;
     }
+    return nullptr;
 }
 
 template <typename T>
 bool Queue<T>::isEmpty()
 {
-    return (front == nullptr);
+    return (numNodes == 0);
 }
 
 template <typename T>
 bool Queue<T>::containsOne()
 {
-    return (!isEmpty() && rear == nullptr);
+    return (numNodes == 1);
+}
+
+template <typename T>
+std::vector<T*> Queue<T>::getFrontPath()
+{
+    return front->getPath();
 }
 
 #endif

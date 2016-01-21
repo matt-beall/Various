@@ -28,10 +28,21 @@ void Vertex::printChildren()
 
 int Vertex::numChildren()
 {
-    return edges.size();
+    int num = edges.size();
+    return num;
 }
 
 Vertex* Vertex::getChild(int i)
 {
     return edges[i].getNextVert();
+}
+
+int Vertex::getIndex()
+{
+    return index;
+}
+
+int Vertex::getValue()
+{
+    return val;
 }

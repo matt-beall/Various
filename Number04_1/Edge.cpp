@@ -10,12 +10,12 @@ Edge::Edge(Vertex* vPrev, Vertex* vNext)
 
 int Edge::getPreviousIndex()
 {
-    return previousVert->index;
+    return previousVert->getIndex();
 }
 
 int Edge::getNextIndex()
 {
-    return nextVert->index;
+    return nextVert->getIndex();
 }
 
 Vertex* Edge::getNextVert()

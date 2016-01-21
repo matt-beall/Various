@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Vertex.h"
-// #include "Queue.h"
+#include "QueueClass.h"
 
 
 class VertexGraph
@@ -18,7 +18,7 @@ public:
 
     void printGraph();
 
-    bool pathBFS(int startIndex, int goalIndex);
+    std::vector<Vertex*> pathBFS(int startIndex, int goalIndex);
 
 private:
 

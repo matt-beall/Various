@@ -21,11 +21,16 @@ public:
 
     Vertex* getChild(int i);
 
-    int index;
-    int val;
+    int getIndex();
+
+    int getValue();
+
 
 private:
     std::vector<Edge> edges;
+    
+    int index;
+    int val;
 };
 
 
