@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/matt/code/Various/Number01_2/Number01_2.cpp
+stdio.h
+-
+iostream
+-
+vector
+-
+string
+-
+unordered_map
+-
+algorithm
+-
+

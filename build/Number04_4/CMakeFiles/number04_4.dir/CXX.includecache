@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/matt/code/Various/Number04_4/Number04_4.cpp
+iostream
+-
+vector
+-
+array
+-
+queue
+-
+algorithm
+-
+cmath
+-
+math.h
+-
+utility
+-
+

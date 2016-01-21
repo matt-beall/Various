@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -fms-extensions   CMakeFiles/number01_6.dir/Number01_6.cpp.o  -o ../bin/number01_6 -rdynamic 

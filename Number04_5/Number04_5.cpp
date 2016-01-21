@@ -1,5 +1,5 @@
 /*
-Check Balanced: Implement a function to check if a binary tree is balanced. For the purposes of this question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any node never differ by more than one
+Validate BST: Implement a function to check if a binary tree is a binary search tree.
 */
 
 #include <iostream>
@@ -10,8 +10,9 @@ Check Balanced: Implement a function to check if a binary tree is balanced. For 
 #include <cmath>
 #include <math.h>
 #include <utility>
+#include <climits>
 
-#define TREE_SIZE 10
+#define TREE_SIZE 10000
 
 
 class Node
@@ -179,6 +180,30 @@ std::pair<bool, int> isBalanced(Node* thisNode)
     return result;
 }
 
+std::pair<bool, std::array<int, 2>> validateBST(Node* thisNode)
+{
+    std::pair<bool, std::array<int, 2>> result;
+    if(thisNode == nullptr)
+    {
+        result.first = true;
+        result.second = {INT_MAX, INT_MIN};
+        return result;
+    }
+
+
+    std::pair<bool, std::array<int,2>> resultLeft = validateBST(thisNode->getLeft());
+    std::pair<bool, std::array<int,2>> resultRight = validateBST(thisNode->getRight());
+    
+    result.first = resultLeft.first && resultRight.first &&
+                   resultLeft.second[1] <= *thisNode->getValue() &&
+                   resultRight.second[0] > *thisNode->getValue();
+
+    result.second[0] = std::min(std::min(resultLeft.second[0], resultRight.second[0]), *thisNode->getValue());
+    result.second[1] = std::max(std::max(resultLeft.second[1], resultRight.second[1]), *thisNode->getValue());
+
+    return result;
+}
+
 
 int main(){
 
@@ -201,7 +226,7 @@ int main(){
 
     bool unbalance = 0;
 
-    int extra1 = 10;
+    int extra1 = 3;
     int extra2 = 11;
 
     if(unbalance)
@@ -227,6 +252,10 @@ int main(){
     bool balanceResult = balanceResultPair.first;
 
     std::cout << std::endl << "Balanced? " << balanceResult << " Height: " << balanceResultPair.second << std::endl;
+
+    std::pair<bool, std::array<int,2>> bstResult = validateBST(rootNode);
+
+    std::cout << std::endl << "BST? " << bstResult.first << " Min: " << bstResult.second[0] << " Max: " << bstResult.second[1] << std::endl;
 }
 
 
